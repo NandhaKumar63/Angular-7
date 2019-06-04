@@ -1,0 +1,28 @@
+<div class="product-container">
+  <!-- Search input box Start -->
+  <div class="input-group mb-3">
+    <input type="text" [(ngModel)]="search" class="form-control" placeholder="Search by name"
+      aria-label="Search by name" aria-describedby="Search by name">
+  </div>
+  <!-- Search input box End -->
+  <!-- Products Grid Start -->
+  <div class="row">
+    <div class="col-md-3 col-sm-6" *ngFor="let product of products|filter:search">
+      <div class="product-grid">
+        <div class="product-image">
+          <a [routerLink]="[product.id]" [fragment]="'reviews'" [queryParams]="{edit:product.stockAvailable}">
+            <img class="pic-1" [src]="product.imageModelList[0].url" alt="product image">
+          </a>
+        </div>
+        <div class="product-content">
+          <h3 class="title"><a>{{product.name}}</a></h3>
+          <div class="price">{{product.applicablePrice}}
+            <span>{{product.retailPrice}}</span>
+          </div>
+          <a class="add-to-cart pointer link-primary" (click)="addToCart(product)">+ Add To Cart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Products Grid End -->
+</div>

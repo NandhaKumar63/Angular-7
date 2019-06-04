@@ -1,0 +1,194 @@
+<div class="container" *ngIf="productDetail">
+  <div class="my-3">
+    <a routerLink="/products">
+      < Back to products</a> <!-- http://localhost:4200/products -->
+  </div>
+  <div class="card">
+    <div class="row">
+      <aside class="col-sm-5 border-right">
+        <article class="gallery-wrap">
+          <div class="img-big-wrap">
+            <div> <a><img [src]="productDetail.imageModelList[0]?.url"></a></div>
+          </div> <!-- slider-product.// -->
+          <div class="img-small-wrap" *ngIf="productDetail.imageModelList[0]?.details">
+            <div class="item-gallery" *ngFor="let thumbnail of productDetail.imageModelList[0]?.details">
+              <img [src]="thumbnail.url">
+            </div>
+          </div> <!-- slider-nav.// -->
+        </article>
+      </aside>
+      <aside class="col-sm-7">
+        <article class="card-body p-5">
+          <h3 class="title mb-3">{{productDetail.displayName}}</h3>
+
+          <p class="price-detail-wrap">
+            <span class="price h3 text-warning">
+              <span class="currency">US $</span><span class="num">{{productDetail.retailPrice}}</span>
+            </span>
+          </p>
+          <dl class="item-property">
+            <dt>Description</dt>
+            <dd>
+              <div [innerHTML]="productDetail.shortDescription"></div>
+            </dd>
+          </dl>
+          <dl class="param param-feature">
+            <dt>Item#</dt>
+            <dd>{{productDetail.itemNumber}}</dd>
+          </dl> <!-- item-property-hor .// -->
+          <dl class="param param-feature">
+            <dt>Color</dt>
+            <dd>Black and white</dd>
+          </dl> <!-- item-property-hor .// -->
+          <hr>
+          <div class="row">
+            <div class="col-sm-5">
+              <dl class="param param-inline">
+                <dt>Quantity: </dt>
+                <dd>
+                  <select class="form-control form-control-sm" style="width:70px;">
+                    <option> 1 </option>
+                    <option> 2 </option>
+                    <option> 3 </option>
+                  </select>
+                </dd>
+              </dl> <!-- item-property .// -->
+            </div> <!-- col.// -->
+            <div class="col-sm-7">
+              <dl class="param param-inline">
+                <dt>Size: </dt>
+                <dd>
+                  <label class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                      value="option2">
+                    <span class="form-check-label">SM</span>
+                  </label>
+                  <label class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                      value="option2">
+                    <span class="form-check-label">MD</span>
+                  </label>
+                  <label class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                      value="option2">
+                    <span class="form-check-label">XXL</span>
+                  </label>
+                </dd>
+              </dl> <!-- item-property .// -->
+            </div> <!-- col.// -->
+          </div> <!-- row.// -->
+          <hr>
+          <a href="#" class="btn btn-primary text-uppercase mr-3"> Buy now </a>
+          <a href="#" class="btn btn-outline-primary text-uppercase"> <i class="fas fa-shopping-cart"></i> Add to cart
+          </a>
+        </article> <!-- card-body.// -->
+      </aside> <!-- col.// -->
+    </div> <!-- row.// -->
+  </div> <!-- card.// -->
+
+
+</div>
+<!--container.//-->
+
+<div tabindex="0" class="container mt-5" id="reviews" *ngIf="productDetail">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="text-center">
+        Reviews
+      </h1>
+      <hr />
+      <div class="review-block">
+        <div class="row">
+          <div class="col-sm-3">
+            <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
+            <div class="review-block-name"><a href="#">nktailor</a></div>
+            <div class="review-block-date">January 29, 2016<br />1 day ago</div>
+          </div>
+          <div class="col-sm-9">
+            <div class="review-block-rate">
+              <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="review-block-title">this was nice in buy</div>
+            <div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this
+              was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-sm-3">
+            <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
+            <div class="review-block-name"><a href="#">nktailor</a></div>
+            <div class="review-block-date">January 29, 2016<br />1 day ago</div>
+          </div>
+          <div class="col-sm-9">
+            <div class="review-block-rate">
+              <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="review-block-title">this was nice in buy</div>
+            <div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this
+              was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
+          </div>
+        </div>
+        <hr />
+        <div class="row">
+          <div class="col-sm-3">
+            <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
+            <div class="review-block-name"><a href="#">nktailor</a></div>
+            <div class="review-block-date">January 29, 2016<br />1 day ago</div>
+          </div>
+          <div class="col-sm-9">
+            <div class="review-block-rate">
+              <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="review-block-title">this was nice in buy</div>
+            <div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this
+              was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div> <!-- /container -->

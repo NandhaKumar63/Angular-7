@@ -1,0 +1,61 @@
+<div class="cart_section">
+  <div class="container">
+    <div class="py-4 my-4 grey-bg">
+      <h2 class="text-center">Shopping Cart</h2>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="cart_container">
+          <!-- Cart Bar -->
+          <div class="cart_bar">
+            <ul class="cart_bar_list item_list d-flex flex-row align-items-center justify-content-end">
+              <li class="mr-auto">Product</li>
+              <li>Price</li>
+              <li>Quantity</li>
+              <li>Total</li>
+            </ul>
+          </div>
+          <!-- Cart Items -->
+          <div class="cart_items">
+            <ul class="cart_items_list">
+              <!-- Cart Item -->
+              <li
+                class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-end justify-content-start">
+                <div
+                  class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start mr-auto">
+                  <div>
+                    <div class="product_number">1</div>
+                  </div>
+                  <div>
+                    <div class="product_image"><img src="https://cdn.flptitanqa.com/content/products/image-gallery/usa/skincare/Sonya%20daily%20skincare%20group%201000x1000.png" alt=""></div>
+                  </div>
+                  <div class="product_name_container">
+                    <div class="product_name"><a href="product.html">Cool Flufy Clothing without Stripes</a></div>
+                    <div class="product_text">Second line for additional info</div>
+                  </div>
+                </div>
+                <div class="product_price product_text"><span>Price: </span>$3.99</div>
+                <div class="product_quantity_container">
+                  <div class="product_quantity ml-lg-auto mr-lg-auto text-center">
+                    <span class="product_text product_num">1</span>
+                    <div class="qty_sub qty_button trans_200 text-center"><span>-</span></div>
+                    <div class="qty_add qty_button trans_200 text-center"><span>+</span></div>
+                  </div>
+                </div>
+                <div class="product_total product_text"><span>Total: </span>$3.99</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Cart Buttons -->
+          <div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
+            <div class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">
+                <a href="#" class="btn btn-outline-secondary ">Goto Payment</a>
+                <a [routerLink]="['/products']" class="btn btn-primary ml-md-3">Continue Shopping</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

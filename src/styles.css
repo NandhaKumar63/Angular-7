@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700,900&display=swap');
+body{
+    font-family: 'Montserrat', sans-serif!important;
+}
+.link-primary:hover:not(:active){
+        text-decoration: underline!important;
+    }
+
+.pointer{
+    cursor: pointer;
+}
+.box-shadow-1{
+	-webkit-box-shadow: 0 10px 6px -6px #777;
+	   -moz-box-shadow: 0 10px 6px -6px #777;
+	        box-shadow: 0 10px 6px -6px #777;
+}

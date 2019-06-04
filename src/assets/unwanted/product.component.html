@@ -1,0 +1,52 @@
+In Parent: {{parentName}}
+<button (click)="removeChildComp = true">Destroy</button>
+<app-child *ngIf="!removeChildComp" [(name)]="parentName" [name1]="'name1'">
+  <div #tempRef class="down">
+    down
+  </div>
+  <div class="upper">
+    upper
+  </div>
+</app-child>
+
+
+
+<input id="inputOne" type="text" [(ngModel)]="parentName"> 
+<!-- <h1>
+  Products
+</h1>
+ 
+
+<!-- <div [ngSwitch]="search">
+  <div *ngSwitchCase="'one'"></div>
+  <div *ngSwitchCase="'two'"></div>
+  <div *ngSwitchDefault></div>
+</div> -->
+
+
+
+  <!-- <div [ngClass]="{'one':true,'class2':true}" class="product-container">
+  <div class="row">
+    <div  class="col-md-3 col-sm-6" *ngFor="let product of products">
+      <div class="product-grid">
+        <div class="product-image">
+          <a href="#">
+            
+            <img class="pic-1" [src]="product.imageModelList[0].url" alt="product image">
+          </a>
+          <span *ngIf="product.stockAvailable" class="product-new-label">Sale</span>
+        </div>
+        <div  class="product-content">
+          <h3 class="title"><a>{{product.name}}</a></h3>
+          <div style="font-size: 8px"></div>
+          <div class="price">{{product.applicablePrice}}
+            <span>{{product.retailPrice}}</span>
+          </div>
+          <a class="add-to-cart" (click)="clickMe(product)" href="#">+ Add To Cart</a>
+        </div>
+
+       
+      </div>
+    </div>
+  </div>
+</div> -->
