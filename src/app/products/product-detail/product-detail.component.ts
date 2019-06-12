@@ -30,7 +30,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
       const fragmentId = this.routerState.snapshot.fragment;
       setTimeout(() => {
         const ele = document.getElementById(fragmentId);
-        ele.focus();
+        // ele.focus();
       });
     });
   }

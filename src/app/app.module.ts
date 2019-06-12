@@ -12,6 +12,7 @@ import { ChildThreeComponent } from './parent/child-three/child-three.component'
 import { MyCartModule } from './my-cart/my-cart.module';
 import { CanActivateCartGuard } from './my-cart/guards/can-activate-cart.guard';
 import { AppRoutingModule } from './app-routing.module';
+import { ObservableComponent } from './observable/observable.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AppRoutingModule } from './app-routing.module';
     ParentComponent,
     ChildOneComponent,
     ChildTwoComponent,
-    ChildThreeComponent
+    ChildThreeComponent,
+    ObservableComponent
   ],
   imports: [
     AppRoutingModule,

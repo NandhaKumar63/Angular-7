@@ -9,9 +9,11 @@ import { CanActivateCartGuard } from './my-cart/guards/can-activate-cart.guard';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 import { ProductComponent } from './products/product/product.component';
 import { Routes, RouterModule } from '@angular/router';
+import { ObservableComponent } from './observable/observable.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'parent', pathMatch: 'full' },
+  { path: '', redirectTo: 'products', pathMatch: 'full' },
+  { path: 'observable', component: ObservableComponent },
   { path: 'products', component: ProductComponent },
   { path: 'products/:id', component: ProductDetailComponent },
   { path: 'cart', component: CartComponent, canActivate: [CanActivateCartGuard] },
