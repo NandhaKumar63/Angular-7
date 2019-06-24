@@ -10,10 +10,12 @@ import { ProductDetailComponent } from './products/product-detail/product-detail
 import { ProductComponent } from './products/product/product.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ObservableComponent } from './observable/observable.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'products', pathMatch: 'full' },
+  { path: '', redirectTo: 'forms', pathMatch: 'full' },
   { path: 'observable', component: ObservableComponent },
+  { path: 'forms', component: ReactiveFormsComponent },
   { path: 'products', component: ProductComponent },
   { path: 'products/:id', component: ProductDetailComponent },
   { path: 'cart', component: CartComponent, canActivate: [CanActivateCartGuard] },
@@ -35,6 +37,6 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes)
   ],
-  exports:[RouterModule]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

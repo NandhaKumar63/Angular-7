@@ -7,7 +7,7 @@
   <!-- Search input box End -->
   <!-- Products Grid Start -->
   <div class="row">
-    <div class="col-md-3 col-sm-6" *ngFor="let product of products|filter:search">
+    <div class="col-md-3 col-sm-6" *ngFor="let product of products|filter:search:'name'">
       <div class="product-grid">
         <div class="product-image">
           <a [routerLink]="[product.id]" [fragment]="'reviews'" [queryParams]="{edit:product.stockAvailable}">

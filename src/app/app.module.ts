@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ProductModule } from './products/product.module';
@@ -13,6 +13,7 @@ import { MyCartModule } from './my-cart/my-cart.module';
 import { CanActivateCartGuard } from './my-cart/guards/can-activate-cart.guard';
 import { AppRoutingModule } from './app-routing.module';
 import { ObservableComponent } from './observable/observable.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 
 
 @NgModule({
@@ -22,12 +23,14 @@ import { ObservableComponent } from './observable/observable.component';
     ChildOneComponent,
     ChildTwoComponent,
     ChildThreeComponent,
-    ObservableComponent
+    ObservableComponent,
+    ReactiveFormsComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     ProductModule,
     SharedModule,
     MyCartModule

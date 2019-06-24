@@ -1,0 +1,21 @@
+@error-color:red;
+h4{
+    color: red;
+}
+.app-error{
+    font-size: 14px;
+    margin-top: 2px;
+    color: @error-color;
+    // display: none;
+}
+input.ng-touched, select.ng-touched{
+    &::-webkit-input-placeholder{
+        color: @error-color;
+    }
+    &.ng-invalid {
+        border-color: @error-color;
+        & ~ .app-error{
+            // display: block;
+        }
+    }
+}
