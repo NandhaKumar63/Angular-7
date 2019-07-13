@@ -14,8 +14,21 @@ import { CanActivateCartGuard } from './my-cart/guards/can-activate-cart.guard';
 import { AppRoutingModule } from './app-routing.module';
 import { ObservableComponent } from './observable/observable.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { TranslateModule, TranslateLoader, TranslateModuleConfig } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AppTranslateLoader } from './translation/loader/app-translate-loader';
 
+export function AppTranslateLoaderFactory(httpClient: HttpClient) {
+  return new AppTranslateLoader(httpClient);
+}
 
+const translateConfig: TranslateModuleConfig = {
+  loader: {
+    provide: TranslateLoader,
+    useFactory: (AppTranslateLoaderFactory),
+    deps: [HttpClient]
+  }
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,11 +41,12 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
   ],
   imports: [
     AppRoutingModule,
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    ProductModule,
     SharedModule,
+    TranslateModule.forRoot(translateConfig),
     MyCartModule
   ],
   providers: [CanActivateCartGuard],

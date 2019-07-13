@@ -1,0 +1,9 @@
+{
+    "header": {
+        "products": "products1",
+        "cart": "cart1"
+    },
+    "productlist":{
+        "name":"name1"
+    }
+}

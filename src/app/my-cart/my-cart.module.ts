@@ -5,6 +5,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { CartDataService } from './services/cart-data.service';
 import { CartService } from './services/cart.service';
 import { Routes, RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 // const routes: Routes = [
 //   { path: '', component: CartComponent, pathMatch: 'full' }
@@ -15,6 +16,7 @@ import { Routes, RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule,
+    SharedModule,
     // HttpClientInMemoryWebApiModule.forFeature(CartDataService)
   ],
   providers: [CartService, CartDataService]

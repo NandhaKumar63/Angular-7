@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SharedMessageService } from './shared/services/shared-message.service';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -14,9 +15,13 @@ export class AppComponent implements OnInit {
   cartItemSubscription: Subscription;
   cartCount: number = 0;
 
-  constructor(private sharedMessageService: SharedMessageService, private router: Router) { }
+  constructor(private translateService: TranslateService, private sharedMessageService: SharedMessageService, private router: Router) {
+
+  }
 
   ngOnInit(): void {
+    // do Translation
+    this.translate();
     this.cartCount = JSON.parse(localStorage.getItem('cartCount')) || 0;
 
     this.cartItemSubscription = this.sharedMessageService.getCartSubject$().subscribe((count: number) => {
@@ -30,5 +35,7 @@ export class AppComponent implements OnInit {
       this.router.navigate(['/cart']);
     }
   }
-
+  translate(): void {
+    this.translateService.use('en-us');
+  }
 }

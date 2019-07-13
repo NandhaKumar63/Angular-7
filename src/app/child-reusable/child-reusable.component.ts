@@ -7,19 +7,12 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck, AfterConte
 })
 export class ChildReusableComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, OnDestroy {
 
-
   @Input() name: string = "";
   @Input() title: string = "";
   constructor() {
     console.log('constructor ' + name);
   }
-  clicked(): void {
-    console.log("clicked");
-    
-    setTimeout(() => {
-      console.log("settimeout");
-    });
-  }
+
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
   }
@@ -43,4 +36,12 @@ export class ChildReusableComponent implements OnInit, OnChanges, DoCheck, After
     console.log("onDestroy");
   }
 
+
+  clicked(): void {
+    console.log("clicked");
+    
+    setTimeout(() => {
+      console.log("settimeout");
+    });
+  }
 }

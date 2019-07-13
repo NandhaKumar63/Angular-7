@@ -6,18 +6,15 @@ import { ChildOneComponent } from './parent/child-one/child-one.component';
 import { ParentComponent } from './parent/parent.component';
 import { CartComponent } from './my-cart/cart/cart.component';
 import { CanActivateCartGuard } from './my-cart/guards/can-activate-cart.guard';
-import { ProductDetailComponent } from './products/product-detail/product-detail.component';
-import { ProductComponent } from './products/product/product.component';
 import { Routes, RouterModule } from '@angular/router';
 import { ObservableComponent } from './observable/observable.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'forms', pathMatch: 'full' },
+  { path: '', redirectTo: 'products', pathMatch: 'full' },
   { path: 'observable', component: ObservableComponent },
   { path: 'forms', component: ReactiveFormsComponent },
-  { path: 'products', component: ProductComponent },
-  { path: 'products/:id', component: ProductDetailComponent },
+  { path: 'products', loadChildren: './products/product.module#ProductModule' },
   { path: 'cart', component: CartComponent, canActivate: [CanActivateCartGuard] },
   {
     path: 'parent', component: ParentComponent, children: [
@@ -35,7 +32,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, { paramsInheritanceStrategy: 'always' })
   ],
   exports: [RouterModule]
 })
