@@ -3,10 +3,10 @@
 </h4>
 <hr>
 <div class="row">
-  <div class="col-12 col-md-5">
+  <div class="col-12 col-md-5 d-none">
     <form (ngSubmit)="onSubmit()" #form="ngForm">
       <div class="form-group">
-        <input class="form-control" type="text" placeholder="Username" name="username" ngModel id="username" required>
+        <input  class="form-control" type="text" placeholder="Username" name="username" ngModel id="username" required>
       </div>
       <button class="btn btn-sm btn-secondary mb-3" (click)="suggestUsername()">Suggest username</button>
       <div class="form-group">
@@ -36,3 +36,14 @@
     </form>
   </div>
 </div>
+<div class="d-none">
+  Dynamic HTML
+ <div [innerHTML]="html"></div>
+</div>
+
+<form [formGroup]="requiredForm">
+  <div class="form-group">
+    <input  class="form-control" formControlName="name" type="text" placeholder="Name" name="name"  id="name" required>
+    {{requiredForm.controls['name'].errors | json}}
+  </div>
+</form>

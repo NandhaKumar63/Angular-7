@@ -1,22 +1,22 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { AppComponent } from './app.component';
-import { ProductModule } from './products/product.module';
-import { SharedModule } from './shared/shared.module';
-import { ChildTwoComponent } from './parent/child-two/child-two.component';
-import { ParentComponent } from './parent/parent.component';
-import { ChildOneComponent } from './parent/child-one/child-one.component';
-import { ChildThreeComponent } from './parent/child-three/child-three.component';
-import { MyCartModule } from './my-cart/my-cart.module';
-import { CanActivateCartGuard } from './my-cart/guards/can-activate-cart.guard';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TranslateLoader, TranslateModule, TranslateModuleConfig } from '@ngx-translate/core';
+import { OwlDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
+import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
 import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+import { CanActivateCartGuard } from './my-cart/guards/can-activate-cart.guard';
+import { MyCartModule } from './my-cart/my-cart.module';
 import { ObservableComponent } from './observable/observable.component';
+
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
-import { TranslateModule, TranslateLoader, TranslateModuleConfig } from '@ngx-translate/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './shared/shared.module';
 import { AppTranslateLoader } from './translation/loader/app-translate-loader';
+
 
 export function AppTranslateLoaderFactory(httpClient: HttpClient) {
   return new AppTranslateLoader(httpClient);
@@ -29,27 +29,48 @@ const translateConfig: TranslateModuleConfig = {
     deps: [HttpClient]
   }
 };
+
+const func = (value) => {
+  if (value === 1) {
+    return 'en-US';
+  } else {
+    return 'en-CA';
+  }
+}
+
+const MY_MOMENT_FORMATS = {
+  parseInput: 'l LT',
+  fullPickerInput: 'l LT',
+  datePickerInput: 'MM-DD-YYYY',
+  timePickerInput: 'LT',
+  monthYearLabel: 'MMM YYYY',
+  dateA11yLabel: 'LL',
+  monthYearA11yLabel: 'MMMM YYYY',
+};
 @NgModule({
   declarations: [
     AppComponent,
-    ParentComponent,
-    ChildOneComponent,
-    ChildTwoComponent,
-    ChildThreeComponent,
     ObservableComponent,
-    ReactiveFormsComponent
-  ],
+    ReactiveFormsComponent  ],
   imports: [
     AppRoutingModule,
     HttpClientModule,
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
     TranslateModule.forRoot(translateConfig),
-    MyCartModule
+    MyCartModule,
+    OwlDateTimeModule,
+    OwlMomentDateTimeModule
   ],
-  providers: [CanActivateCartGuard],
+  providers: [CanActivateCartGuard,
+    { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS },
+    // {
+    //   provide: 'language', useValue: Object.freeze({ name: 'nandha' }), deps: []
+    // }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

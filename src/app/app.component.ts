@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SharedMessageService } from './shared/services/shared-message.service';
 import { Router } from '@angular/router';
@@ -15,11 +15,16 @@ export class AppComponent implements OnInit {
   cartItemSubscription: Subscription;
   cartCount: number = 0;
 
-  constructor(private translateService: TranslateService, private sharedMessageService: SharedMessageService, private router: Router) {
+  constructor(
+    // @Inject('language') private myFunc:any,
+    private translateService: TranslateService, private sharedMessageService: SharedMessageService, private router: Router) {
 
   }
 
   ngOnInit(): void {
+  //  console.log(this.myFunc(2));
+  //  this.myFunc['name'] = "kumar";
+  //  console.log(this.myFunc);
     // do Translation
     this.translate();
     this.cartCount = JSON.parse(localStorage.getItem('cartCount')) || 0;

@@ -9,13 +9,12 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductDataService } from './services/product-data.service';
 import { RouterModule } from '@angular/router';
 import { SearchPipe } from './pipes/search.pipe';
-import { ChildReusableComponent } from '../child-reusable/child-reusable.component';
 import { ProductRoutingModule } from './product-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [ProductComponent,
-    SearchPipe, ProductDetailComponent, ChildReusableComponent],
+    SearchPipe, ProductDetailComponent],
   imports: [
     CommonModule,
     FormsModule,
