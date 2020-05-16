@@ -11,10 +11,12 @@ import { RouterModule } from '@angular/router';
 import { SearchPipe } from './pipes/search.pipe';
 import { ProductRoutingModule } from './product-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { ProductListItemComponent } from './product-list-item/product-list-item.component';
+import { CreditCardFormatPipe } from '../shared/pipes/credit-card-format.pipe';
 
 @NgModule({
   declarations: [ProductComponent,
-    SearchPipe, ProductDetailComponent],
+    SearchPipe, ProductDetailComponent,ProductListItemComponent],
   imports: [
     CommonModule,
     FormsModule,

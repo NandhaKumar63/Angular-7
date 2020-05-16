@@ -7,13 +7,17 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { CustomValidatorDirective } from './validators/custom.validator';
 import { AppBootstrapModule } from '../app-bootstrap/app-bootstrap.module';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { HasPermissionDirective } from './directives/has-permission.directive';
+import { OnlyDigitsDirective } from './directives/only-digits.directive';
+import { FloatLabelDirective } from './directives/float-label.directive';
+import { CreditCardFormatPipe } from './pipes/credit-card-format.pipe';
 
 const SHARED_MODULE_CONSTANTS = [
-  PageNotFoundComponent, CustomValidatorDirective];
+  PageNotFoundComponent, CustomValidatorDirective,HasPermissionDirective, OnlyDigitsDirective];
 let options: Partial<IConfig> | (() => Partial<IConfig>);
 
 @NgModule({
-  declarations: [SHARED_MODULE_CONSTANTS, SafeHtmlPipe],
+  declarations: [SHARED_MODULE_CONSTANTS, SafeHtmlPipe, FloatLabelDirective,CreditCardFormatPipe],
   imports: [
     CommonModule,
     RouterModule,
@@ -22,7 +26,7 @@ let options: Partial<IConfig> | (() => Partial<IConfig>);
     NgxMaskModule.forRoot(options)
   ],
   exports: [
-    SHARED_MODULE_CONSTANTS,
+    SHARED_MODULE_CONSTANTS,CreditCardFormatPipe,
     AppTranslationModule,
     AppBootstrapModule,
     NgxMaskModule

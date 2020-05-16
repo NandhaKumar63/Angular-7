@@ -16,6 +16,10 @@ import { ObservableComponent } from './observable/observable.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { SharedModule } from './shared/shared.module';
 import { AppTranslateLoader } from './translation/loader/app-translate-loader';
+import { ProductListItemComponent } from './products/product-list-item/product-list-item.component';
+import { HasPermissionDirective } from './shared/directives/has-permission.directive';
+import { PaymentModule } from './payment/payment.module';
+import { ProductService } from './products/services/product.service';
 
 
 export function AppTranslateLoaderFactory(httpClient: HttpClient) {
@@ -51,7 +55,9 @@ const MY_MOMENT_FORMATS = {
   declarations: [
     AppComponent,
     ObservableComponent,
-    ReactiveFormsComponent  ],
+    ReactiveFormsComponent,
+    
+      ],
   imports: [
     AppRoutingModule,
     HttpClientModule,
@@ -63,7 +69,8 @@ const MY_MOMENT_FORMATS = {
     TranslateModule.forRoot(translateConfig),
     MyCartModule,
     OwlDateTimeModule,
-    OwlMomentDateTimeModule
+    OwlMomentDateTimeModule,
+    PaymentModule
   ],
   providers: [CanActivateCartGuard,
     { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS },

@@ -13,13 +13,14 @@ export class ProductComponent implements OnInit {
   products: IProduct[];
   search: string;
 
-  show: boolean = false;
   constructor(
     private productService: ProductService,
-    private sharedMessageService: SharedMessageService) { }
+    private sharedMessageService: SharedMessageService) {
+  }
 
   ngOnInit() {
     this.getProducts();
+    // console.log("Child Injecctor " +this.productService.name);
   }
 
 
@@ -29,11 +30,13 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  addToCart(product: IProduct): void {
+  addTocart(product: IProduct): void {
     this.sharedMessageService.setCartSubject$(1);
   }
-  clickedInParent($event: any): void {
-    this.show = !this.show;
+
+  trackbyId(item: any, index: number): number {
+    return index;
   }
+
 
 }

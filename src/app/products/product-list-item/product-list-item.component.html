@@ -1,0 +1,14 @@
+<div class="product-grid">
+  <div class="product-image">
+    <a [routerLink]="[productItem.id]" [fragment]="'reviews'" [queryParams]="{edit:productItem.stockAvailable}">
+      <img class="pic-1" [src]="productItem.imageModelList[0].url" alt="product image">
+    </a>
+  </div>
+  <div class="product-content">
+    <h3 class="title"><a>{{productItem.name}}</a></h3>
+    <div class="price">{{productItem.applicablePrice}}
+      <span>{{productItem.retailPrice}}</span>
+    </div>
+    <a class="add-to-cart pointer link-primary" (click)="addToCartChild(productItem)">+ Add To Cart</a>
+  </div>
+</div>

@@ -6,6 +6,8 @@ import { IProduct } from '../interfaces/product.interface';
 
 @Injectable()
 export class ProductService {
+  name = "Subbu";
+
   productsURL: string = 'assets/data/products.json';
   productsRootURL: string = 'api/products';
   constructor(private http: HttpClient) {
@@ -25,5 +27,13 @@ export class ProductService {
         tap((res) => res),
         catchError((err) => err)
       );
+  }
+
+  getProductsPromise(): Promise<{} | IProduct[]> {
+    return this.http.get<{} |IProduct[]>(this.productsRootURL)
+      .pipe(
+        tap((res) => res),
+        catchError((err) => err),
+      ).toPromise();
   }
 }
