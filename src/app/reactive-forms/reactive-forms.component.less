@@ -1,6 +1,17 @@
 @error-color:red;
-h4{
-    color: red;
+@primary-color:#007bff;
+@succes-color:#188b27;
+h2{
+    color: @primary-color;
+}
+.invalid{
+    color: @error-color;
+}
+.valid{
+    color: @succes-color;
+}
+pre{
+    font-size: 16px;
 }
 .app-error{
     font-size: 14px;
@@ -8,12 +19,24 @@ h4{
     color: @error-color;
     // display: none;
 }
-input.ng-touched, select.ng-touched{
-    &::-webkit-input-placeholder{
+.form-control:focus{
+    box-shadow: none;
+}
+input.ng-touched,input.ng-dirty, select.ng-touched, select.ng-dirty{
+    &.ng-invalid::-webkit-input-placeholder{
         color: @error-color;
+    }
+    &.ng-valid::-webkit-input-placeholder{
+        color:  @succes-color;
     }
     &.ng-invalid {
         border-color: @error-color;
+        & ~ .app-error{
+            // display: block;
+        }
+    }
+    &.ng-valid {
+        border-color: @succes-color;
         & ~ .app-error{
             // display: block;
         }

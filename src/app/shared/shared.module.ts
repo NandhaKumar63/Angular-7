@@ -14,7 +14,6 @@ import { CreditCardFormatPipe } from './pipes/credit-card-format.pipe';
 
 const SHARED_MODULE_CONSTANTS = [
   PageNotFoundComponent, CustomValidatorDirective,HasPermissionDirective, OnlyDigitsDirective];
-let options: Partial<IConfig> | (() => Partial<IConfig>);
 
 @NgModule({
   declarations: [SHARED_MODULE_CONSTANTS, SafeHtmlPipe, FloatLabelDirective,CreditCardFormatPipe],
@@ -22,14 +21,12 @@ let options: Partial<IConfig> | (() => Partial<IConfig>);
     CommonModule,
     RouterModule,
     AppTranslationModule,
-    AppBootstrapModule,
-    NgxMaskModule.forRoot(options)
+    AppBootstrapModule
   ],
   exports: [
     SHARED_MODULE_CONSTANTS,CreditCardFormatPipe,
     AppTranslationModule,
-    AppBootstrapModule,
-    NgxMaskModule
+    AppBootstrapModule
   ],
   providers: []
 })

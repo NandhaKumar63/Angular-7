@@ -20,6 +20,11 @@ import { ProductListItemComponent } from './products/product-list-item/product-l
 import { HasPermissionDirective } from './shared/directives/has-permission.directive';
 import { PaymentModule } from './payment/payment.module';
 import { ProductService } from './products/services/product.service';
+import { CommunicationService, EmailService } from './services/communication.service';
+import { HeaderComponent } from './header/header.component';
+import { SendService } from './services/send.service';
+import { TemplateDrivenFormsComponent } from './template-driven-forms/template-driven-forms.component';
+import { HttpRequestComponent } from './http-request/http-request.component';
 
 
 export function AppTranslateLoaderFactory(httpClient: HttpClient) {
@@ -56,6 +61,9 @@ const MY_MOMENT_FORMATS = {
     AppComponent,
     ObservableComponent,
     ReactiveFormsComponent,
+    HeaderComponent,
+    TemplateDrivenFormsComponent,
+    HttpRequestComponent,
     
       ],
   imports: [
@@ -74,9 +82,9 @@ const MY_MOMENT_FORMATS = {
   ],
   providers: [CanActivateCartGuard,
     { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS },
-    // {
-    //   provide: 'language', useValue: Object.freeze({ name: 'nandha' }), deps: []
-    // }
+    CommunicationService,
+    SendService,
+    EmailService
   ],
   bootstrap: [AppComponent]
 })

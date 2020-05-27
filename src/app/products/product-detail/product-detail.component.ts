@@ -23,8 +23,13 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
     @Inject('Window') private window: Window) { }
 
   ngOnInit() {
-    const id = this.routerState.snapshot.params['id'];
-    this.getProductByID(id);
+    // const id = this.routerState.snapshot.params['id'];
+
+    this.routerState.params.subscribe((params) => {
+      const yourID = params['id'];
+      this.getProductByID(yourID);
+    });
+
   }
 
   ngAfterViewInit(): void {
@@ -68,7 +73,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
     //  })
 
     let doc = new jsPDF('p', 'pt', 'a4');
-    doc.addHTML(ele, ()=> {
+    doc.addHTML(ele, () => {
       // doc.save('html.pdf');
       debugger
     });

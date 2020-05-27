@@ -1,27 +1,5 @@
 <div>
-    <header class="text-center">
-        <nav class="navbar navbar-expand-sm bg-light navbar-light">
-            <a class="navbar-brand" >
-                <img src="assets/logos/shop_logo.png" width="40" height="40" alt="shop logo">
-                Shop
-            </a>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/products']" [routerLinkActiveOptions]="{exact:true}">{{"header.Products" | translate}}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">{{"header.Favorites" | translate}}</a>
-                </li>
-            </ul>
-            <span class="form-inline ml-auto my-2 my-lg-0">
-                <!-- <img src="assets/favicon/shop_3.png" alt=""> -->
-                <button (click)="gotoCart($event)" type="button" class="btn btn-primary">
-                    Cart <span class="badge badge-light">{{cartCount}}</span>
-                    <span class="sr-only">cart item count</span>
-                </button>
-            </span>
-        </nav>
-    </header>
+    <app-header></app-header>
     <div class="container-fluid">
         <div class="px-2 mt-2 min-height">
             <!-- components will be replaced here -->

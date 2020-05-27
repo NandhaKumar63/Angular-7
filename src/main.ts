@@ -1,4 +1,4 @@
-import { enableProdMode, ReflectiveInjector } from '@angular/core';
+import { enableProdMode, ReflectiveInjector, InjectionToken } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
@@ -47,12 +47,12 @@ function createInstance(key) {
 
 // Child Injectors
 let childInjector = injector.resolveAndCreateChild([
-  EmailService
+  // EmailService
 ]);
 
-let parentEmailService = injector.get(EmailService); // Root Module // App Module
-let childEmailService = childInjector.get(EmailService); // Feature Module / Product Module
-// console.log(parentEmailService === childEmailService ? "*** MATCHED ***" : "*** NOT MATCHED ***");
+let parentEmailService = injector.get(EmailService); // @NgModule
+let childEmailService = childInjector.get(EmailService); // @Component
+console.log(parentEmailService === childEmailService ? "*** MATCHED ***" : "*** NOT MATCHED ***");
 
 
 
@@ -110,7 +110,43 @@ let injector4 = ReflectiveInjector.resolveAndCreate([
   }
 ]);
 
-console.log(injector4.get(EmailService));
+// console.log(injector4.get(EmailService));
+
+
+// Types of Tokens
+
+// String Tokens
+// let parentInjector = ReflectiveInjector.resolveAndCreate([
+//   { provide: "EmailService", useClass: EmailService }
+// ]);
+
+// let stringEmailService = parentInjector.get("EmailService");
+// console.log(stringEmailService);
+
+// Type Tokens
+// let parentInjector = ReflectiveInjector.resolveAndCreate([
+//   { provide: EmailService, useClass: EmailService },
+//   { provide: SendGridService, useClass: SendGridService }
+// ]);
+
+// let typeEmailService = parentInjector.get(SendGridService);
+// console.log(typeEmailService);
+
+export const EmailService1 = new InjectionToken<string>("EmailService");
+export const EmailService2 = new InjectionToken<string>("EmailService");
+// Injection Tokens
+let parentInjector = ReflectiveInjector.resolveAndCreate([
+  { provide: EmailService1, useClass: EmailService }, // in 3rd party @NgModule providers
+  { provide: EmailService2, useClass: SendGridService } // in app module
+]);
+let injectionTokenEmailService1 = parentInjector.get(EmailService1);
+let injectionTokenEmailService2 = parentInjector.get(EmailService2);
+
+// console.log(EmailService1 === EmailService2 ? "*** MATCHED ***" : "*** NOT MATCHED ***");
+// console.log(injectionTokenEmailService1);
+// console.log(injectionTokenEmailService2);
+
+// console.log(EmailService1 === EmailService2);
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));

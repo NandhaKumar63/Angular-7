@@ -1,0 +1,70 @@
+<h4>
+  Template Driven Forms
+</h4>
+<hr>
+<div  class="row">
+  <div class="col-12 col-md-5">
+    <!-- {{signupForm.value | json}} -->
+    <form (ngSubmit)="onSubmit(signupForm)" #signupForm="ngForm">
+      <!-- Username -->
+      <div class="form-group">
+        <input class="form-control" type="text" placeholder="Username" name="username" ngModel #username="ngModel" id="username" required minlength="5">
+        <p class="app-error" *ngIf="username.hasError('required') && username.touched">Required</p>
+        <p class="app-error" *ngIf="!username.errors?.required && username.errors?.minlength && username.touched">Username should be atleast 5 characters.</p>
+      </div>
+
+      <!-- Suggest Username button -->
+      <button #divElement class="btn btn-sm btn-secondary mb-3" (click)="suggestUsername()">Suggest username</button>
+
+      <!-- Email -->
+      <div class="form-group">
+        <input class="form-control" type="email" placeholder="Email" name="email" ngModel id="email" required email
+          #email="ngModel">
+        <p class="app-error" *ngIf="email.invalid && email.touched">Please enter valid email!</p>
+      </div>
+
+      <!-- Question -->
+      <div class="form-group">
+        <select class="form-control" name="question" [ngModel]="defaultQuestion" id="question">
+          <option value="mobile">What is your first mobile name?</option>
+          <option value="pet">What is your first pet name?</option>
+        </select>
+      </div>
+
+      <!-- Answer -->
+      <div class="form-group">
+        <textarea class="form-control" name="answer" [(ngModel)]="answer" id="answer" rows="3"></textarea>
+        <p><strong>your answer: </strong>{{answer}}</p>
+      </div>
+
+      <!-- Gender -->
+      <div class="form-group">
+        <div class="form-check form-check-inline" *ngFor="let gender of genders">
+          <label class="form-check-label" for="gender{{gender}}">
+            <input class="form-check-input" type="radio" name="gender" ngModel [value]="gender" id="gender{{gender}}">
+            {{gender}}
+          </label>
+        </div>
+      </div>
+      <!-- Submit Button -->
+      <button [disabled]="signupForm.invalid" class="btn btn-primary" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- <div class="d-none">
+  Dynamic HTML
+ <div [innerHTML]="html"></div>
+</div>
+
+<form [formGroup]="requiredForm">
+  <div class="form-group">
+    <input  class="form-control" formControlName="name" type="text" placeholder="Name" name="name"  id="name" required>
+    {{requiredForm.controls['name'].errors | json}}
+  </div>
+</form> -->
