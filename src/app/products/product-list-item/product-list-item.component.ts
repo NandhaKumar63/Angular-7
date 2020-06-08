@@ -14,7 +14,9 @@ export class ProductListItemComponent implements OnInit {
   @Output('addingToCart')
   addToCartClicked = new EventEmitter<IProduct>();
 
-  constructor() { }
+  constructor() { 
+    console.log("")
+  }
 
   ngOnInit() {
 

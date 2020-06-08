@@ -13,10 +13,12 @@ import { ProductRoutingModule } from './product-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { ProductListItemComponent } from './product-list-item/product-list-item.component';
 import { CreditCardFormatPipe } from '../shared/pipes/credit-card-format.pipe';
+import { IncredientsComponent } from './incredients/incredients.component';
+import { ReviewsComponent } from './reviews/reviews.component';
 
 @NgModule({
   declarations: [ProductComponent,
-    SearchPipe, ProductDetailComponent,ProductListItemComponent],
+    SearchPipe, ProductDetailComponent,ProductListItemComponent, IncredientsComponent, ReviewsComponent],
   imports: [
     CommonModule,
     FormsModule,

@@ -19,13 +19,13 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   img: string;
 
   constructor(private productService: ProductService,
-    private routerState: ActivatedRoute, private router: Router,
+    private activatedRoute: ActivatedRoute, private router: Router,
     @Inject('Window') private window: Window) { }
 
   ngOnInit() {
     // const id = this.routerState.snapshot.params['id'];
 
-    this.routerState.params.subscribe((params) => {
+    this.activatedRoute.params.subscribe((params) => {
       const yourID = params['id'];
       this.getProductByID(yourID);
     });
@@ -34,12 +34,12 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
 
-
   }
+  
   getProductByID(id: number): void {
     this.productService.getProductByID(id).subscribe((product: IProduct) => {
       this.productDetail = product;
-      const fragmentId = this.routerState.snapshot.fragment;
+      const fragmentId = this.activatedRoute.snapshot.fragment;
       setTimeout(() => {
         const ele = document.getElementById(fragmentId);
         // ele.focus();
@@ -49,7 +49,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
 
   gotoProducts(): void {
     this.router.navigate(['../products'], {
-      relativeTo: this.routerState
+      relativeTo: this.activatedRoute
     });
   }
 

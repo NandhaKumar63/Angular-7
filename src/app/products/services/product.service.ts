@@ -15,14 +15,14 @@ export class ProductService {
   }
 
   getProducts(): Observable<{} | IProduct[]> {
-    return this.http.get<{} |IProduct[]>(this.productsRootURL)
+    return this.http.get<{} | IProduct[]>(this.productsRootURL)
       .pipe(
         tap((res) => res),
         catchError((err) => err)
       );
   }
-  getProductByID(id: number): Observable<{} |IProduct> {
-    return this.http.get<{} |IProduct>(this.productsRootURL + '/' + id)
+  getProductByID(id: number): Observable<{} | IProduct> {
+    return this.http.get<{} | IProduct>(this.productsRootURL + '/' + id)
       .pipe(
         tap((res) => res),
         catchError((err) => err)
@@ -30,10 +30,20 @@ export class ProductService {
   }
 
   getProductsPromise(): Promise<{} | IProduct[]> {
-    return this.http.get<{} |IProduct[]>(this.productsRootURL)
+    return this.http.get<{} | IProduct[]>(this.productsRootURL)
       .pipe(
         tap((res) => res),
         catchError((err) => err),
       ).toPromise();
   }
+
+
+  getIncredients(id): string {
+    return `<ul>
+      <li>Inner Leaf Aloe Vera Gel - 96%</li>
+      <li>Citric Acid - pH regulator - Lemons.</li>
+      <li>Xanthum Gum - Sea Kelp.</li>
+    </ul>`;
+  }
+
 }

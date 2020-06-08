@@ -4,28 +4,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule, TranslateModuleConfig } from '@ngx-translate/core';
-import { OwlDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
-import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import { CanActivateCartGuard } from './my-cart/guards/can-activate-cart.guard';
-import { MyCartModule } from './my-cart/my-cart.module';
-import { ObservableComponent } from './observable/observable.component';
-
-import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
-import { SharedModule } from './shared/shared.module';
-import { AppTranslateLoader } from './translation/loader/app-translate-loader';
-import { ProductListItemComponent } from './products/product-list-item/product-list-item.component';
-import { HasPermissionDirective } from './shared/directives/has-permission.directive';
-import { PaymentModule } from './payment/payment.module';
-import { ProductService } from './products/services/product.service';
-import { CommunicationService, EmailService } from './services/communication.service';
+import { CallToActionComponent } from './call-to-action/call-to-action.component';
+import { CtaUrlDirective } from './cta-url.directive';
 import { HeaderComponent } from './header/header.component';
-import { SendService } from './services/send.service';
-import { TemplateDrivenFormsComponent } from './template-driven-forms/template-driven-forms.component';
 import { HttpRequestComponent } from './http-request/http-request.component';
-
+import { CanActivateCartGuard } from './my-cart/guards/can-activate-cart.guard';
+import { ObservableComponent } from './observable/observable.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { CommunicationService, EmailService } from './services/communication.service';
+import { SendService } from './services/send.service';
+import { SharedModule } from './shared/shared.module';
+import { TemplateDrivenFormsComponent } from './template-driven-forms/template-driven-forms.component';
+import { AppTranslateLoader } from './translation/loader/app-translate-loader';
 
 export function AppTranslateLoaderFactory(httpClient: HttpClient) {
   return new AppTranslateLoader(httpClient);
@@ -47,15 +39,15 @@ const func = (value) => {
   }
 }
 
-const MY_MOMENT_FORMATS = {
-  parseInput: 'l LT',
-  fullPickerInput: 'l LT',
-  datePickerInput: 'MM-DD-YYYY',
-  timePickerInput: 'LT',
-  monthYearLabel: 'MMM YYYY',
-  dateA11yLabel: 'LL',
-  monthYearA11yLabel: 'MMMM YYYY',
-};
+// const MY_MOMENT_FORMATS = {
+//   parseInput: 'l LT',
+//   fullPickerInput: 'l LT',
+//   datePickerInput: 'MM-DD-YYYY',
+//   timePickerInput: 'LT',
+//   monthYearLabel: 'MMM YYYY',
+//   dateA11yLabel: 'LL',
+//   monthYearA11yLabel: 'MMMM YYYY',
+// };
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +56,8 @@ const MY_MOMENT_FORMATS = {
     HeaderComponent,
     TemplateDrivenFormsComponent,
     HttpRequestComponent,
-    
+    CtaUrlDirective,
+    CallToActionComponent 
       ],
   imports: [
     AppRoutingModule,
@@ -75,13 +68,12 @@ const MY_MOMENT_FORMATS = {
     ReactiveFormsModule,
     SharedModule,
     TranslateModule.forRoot(translateConfig),
-    MyCartModule,
-    OwlDateTimeModule,
-    OwlMomentDateTimeModule,
-    PaymentModule
+    
+    // OwlDateTimeModule,
+    // OwlMomentDateTimeModule
   ],
   providers: [CanActivateCartGuard,
-    { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS },
+    // { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS },
     CommunicationService,
     SendService,
     EmailService

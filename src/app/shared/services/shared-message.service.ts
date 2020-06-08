@@ -7,6 +7,7 @@ import { Subject, Observable } from 'rxjs';
 export class SharedMessageService {
 
   private cartSubject = new Subject<number>();
+  private destroySubject = new Subject<boolean>();
 
   constructor() { }
 
@@ -16,4 +17,14 @@ export class SharedMessageService {
   setCartSubject$(count: number) {
     this.cartSubject.next(count);
   }
+
+
+  getDestroySubject$(): Observable<boolean> {
+    return this.destroySubject.asObservable();
+  }
+  setDestroySubject$(enabled: boolean) {
+    this.destroySubject.next(enabled);
+  }
+
+
 }

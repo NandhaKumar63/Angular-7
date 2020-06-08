@@ -6,7 +6,7 @@
     "start": "ng serve --port 4000",
     "dev": "ng serve --port 4300",
     "dev2": "ng serve --port 4400",
-    "build": "ng build",
+    "build": "ng build --prod --aot=true",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
